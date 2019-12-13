@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src='http://localhost:8000/CLodopfuncs.js?name=CLODOPA'></script>
+    <script src='../templates/LodopFunc.js'></script>
+    <object  id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0>
+        <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
+    </object>
+</head>
+<body onload="printing2()">
+<p >Thermal Printer Test-Print</p>
+<p id="demo" th:text="${a}"></p>
+<img alt="" id="imgQR" src="/static/aaa.jpg">
+<img src="/static/aaaa.jpg" id="imgText" alt="">
+<!--<button onclick="sendtoprinter()">Click me</button>-->
+<script>
+    var LODOP=getLodop();
+    // var information = '${PrinterController.a}';
+
+    function printing2() {
+        LODOP.PRINT_INIT("");
+        //SET_PRINT_PAGESIZE(intOrient,intPageWidth,intPageHeight,strPageName);
+        LODOP.SET_PRINT_PAGESIZE(1,1100,500,0);
+        //LODOP.ADD_PRINT_BARCODE(Top,Left,Width,Height,BarCodeType,BarCodeValue);
+        // LODOP.ADD_PRINT_BARCODE(30,10,250,100,"QRCode","456456456");
+        // LODOP.SET_PRINT_STYLEA(0,"QRCodeVersion",7);
+        // LODOP.ADD_PRINT_BARCODE(30,160,250,100,"QRCode","123123123123123");
+        // LODOP.SET_PRINT_STYLEA(0,"QRCodeVersion",7);
+        LODOP.ADD_PRINT_HTM(100,100,250,100,document.getElementById("imgQR"));
+        LODOP.SET_PRINT_STYLEA(0,"text-align","center");
+        // LODOP.ADD_PRINT_BARCODE(30,240,250,100,"QRCode","852852852");
+        // LODOP.SET_PRINT_STYLEA(0,"QRCodeVersion",7);
+
+        LODOP.ADD_PRINT_TEXT(150,130,500,50,"2019-12-13 00:00:00 abcde");
+        LODOP.SET_PRINT_STYLE("FontSize",12);
+        // LODOP.PRINT_DESIGN();
+        // LODOP.PRINT();
+        LODOP.PREVIEW();
+        // LODOP.WRITE_PORT_DATA("USB002",LODOP.PRINT());
+
+    }
+    // function sendtoprinter() {
+    //     var information = document.getElementById("demo").innerHTML;
+    //     // information.style.display;
+    //     LODOP.PRINT_INIT("");
+    //     LODOP.ADD_PRINT_TEXT(30,10,350,30,information);   //to get data passed from controller
+    //     // LODOP.WRITE_PORT_DATA("USB001",LODOP.PRINT(printing2()));
+    //     // LODOP.WRITE_PORT_DATA("USB001",LODOP.PREVIEW(printing2()));
+    //     // LODOP.SEND_PRINT_RAWDATA(LODOP.PRINT(printing2()));
+    //     // LODOP.WRITE_PORT_DATA("USB001",LODOP.PREVIEW(information));
+    //     // LODOP.PREVIEW(information);
+    //     LODOP.PREVIEW();
+    // }
+</script>
+</body>
+</html>
