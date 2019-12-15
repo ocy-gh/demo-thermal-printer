@@ -8,50 +8,46 @@
         <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
     </object>
 </head>
-<body onload="printing2()">
-<p >Thermal Printer Test-Print</p>
-<p id="demo" th:text="${a}"></p>
-<img alt="" id="imgQR" src="/static/aaa.jpg">
-<img src="/static/aaaa.jpg" id="imgText" alt="">
-<!--<button onclick="sendtoprinter()">Click me</button>-->
-<script>
-    var LODOP=getLodop();
-    // var information = '${PrinterController.a}';
-
-    function printing2() {
-        LODOP.PRINT_INIT("");
-        //SET_PRINT_PAGESIZE(intOrient,intPageWidth,intPageHeight,strPageName);
-        LODOP.SET_PRINT_PAGESIZE(1,1100,500,0);
-        //LODOP.ADD_PRINT_BARCODE(Top,Left,Width,Height,BarCodeType,BarCodeValue);
-        // LODOP.ADD_PRINT_BARCODE(30,10,250,100,"QRCode","456456456");
-        // LODOP.SET_PRINT_STYLEA(0,"QRCodeVersion",7);
-        // LODOP.ADD_PRINT_BARCODE(30,160,250,100,"QRCode","123123123123123");
-        // LODOP.SET_PRINT_STYLEA(0,"QRCodeVersion",7);
-        LODOP.ADD_PRINT_HTM(100,100,250,100,document.getElementById("imgQR"));
-        LODOP.SET_PRINT_STYLEA(0,"text-align","center");
-        // LODOP.ADD_PRINT_BARCODE(30,240,250,100,"QRCode","852852852");
-        // LODOP.SET_PRINT_STYLEA(0,"QRCodeVersion",7);
-
-        LODOP.ADD_PRINT_TEXT(150,130,500,50,"2019-12-13 00:00:00 abcde");
-        LODOP.SET_PRINT_STYLE("FontSize",12);
-        // LODOP.PRINT_DESIGN();
-        // LODOP.PRINT();
-        LODOP.PREVIEW();
-        // LODOP.WRITE_PORT_DATA("USB002",LODOP.PRINT());
-
-    }
-    // function sendtoprinter() {
-    //     var information = document.getElementById("demo").innerHTML;
-    //     // information.style.display;
-    //     LODOP.PRINT_INIT("");
-    //     LODOP.ADD_PRINT_TEXT(30,10,350,30,information);   //to get data passed from controller
-    //     // LODOP.WRITE_PORT_DATA("USB001",LODOP.PRINT(printing2()));
-    //     // LODOP.WRITE_PORT_DATA("USB001",LODOP.PREVIEW(printing2()));
-    //     // LODOP.SEND_PRINT_RAWDATA(LODOP.PRINT(printing2()));
-    //     // LODOP.WRITE_PORT_DATA("USB001",LODOP.PREVIEW(information));
-    //     // LODOP.PREVIEW(information);
-    //     LODOP.PREVIEW();
-    // }
-</script>
+<!--<body onload="printing2()">-->
+<body>
+    <p id="txtPrint">Thermal Printer Test-Print</p>
+    <button onclick="printing2()">Click to Print</button>
+<!--    <p id="demo" th:text="${a}"></p>-->
+    <p> </p>
+    <div id="divImgQR">
+        <img alt="" id="imgQR" src="/image/aaa.jpg" width="100" height="100">
+    </div>
+    <div id="divImgText">
+        <img src="/image/aaaa.jpg" id="imgText" alt="">
+    </div>
 </body>
 </html>
+
+<script>
+    var LODOP=getLodop();
+
+    function printing2() {
+        // var imgQR = document.getElementById("imgQR").src;
+        var imgQR = document.getElementById("imgQR");
+
+        LODOP.PRINT_INIT("");
+        LODOP.SET_PRINT_PAGESIZE(1,1100,500,0);
+        // LODOP.ADD_PRINT_IMAGE(0,0,150,150,"<img border='0' src='/image/aaa.jpg' width=500 height=500 />");
+        // LODOP.ADD_PRINT_HTM(0,0,"100%","100%", "<img border='0' src='/image/aaa.jpg' width=170 height=170 alt=''/>");
+        // LODOP.ADD_PRINT_HTM(10,10,"100%","100%","<!DOCTYPE html>"+document.getElementById("divImgQR").innerHTML);
+        LODOP.ADD_PRINT_HTM("10%", "10%", "100%", "100%","<!DOCTYPE html>"+document.getElementById("divImgQR").innerHTML );
+        // LODOP.SET_PRINT_STYLEA(0,"Stretch",1);
+        // LODOP.SET_PRINT_STYLEA(0,"Horient",2);//打印项在纸张中水平居中
+        LODOP.ADD_PRINT_HTM(160,90,20,20,"<!DOCTYPE html>"+document.getElementById("divImgText").innerHTML);
+        // LODOP.SET_PRINT_STYLEA(0,"Stretch",2);
+        // LODOP.SET_PRINT_STYLEA(0,"Horient",2);//打印项在纸张中水平居中
+        // LODOP.SET_PRINT_STYLEA(0,"HtmWaitMilSecs",10000);  //delay
+
+        // LODOP.ADD_PRINT_TEXT(150,130,500,50,"2019-12-13 00:00:00 abcde");
+        // LODOP.SET_PRINT_STYLE("FontSize",12);
+        // LODOP.PRINT();
+        // LODOP.PRINT_DESIGN();
+        LODOP.PREVIEW();
+
+    }
+</script>
