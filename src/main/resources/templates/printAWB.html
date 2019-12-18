@@ -10,15 +10,18 @@
 </head>
 <!--<body onload="printing2()">-->
 <body>
-    <p id="txtPrint">Thermal Printer Test-Print</p>
-    <button onclick="printing2()">Click to Print</button>
+<p id="txtPrint">Airway Bill</p>
+<button onclick="printing2()">Click to Print</button>
 <!--    <p id="demo" th:text="${a}"></p>-->
-    <p> </p>
-    <div id="divImgQR">
-        <img alt="" id="imgQR" src="/image/aaa.jpg" width=200 height=200>
+<p> </p>
+    <div id="divDHL">
+        <img src="/image/dhl.jpg" alt="" width=600 height=500>
     </div>
-    <div id="divImgText">
-        <img src="/image/aaaa.jpg" id="imgText" alt="" width=300 height=50>
+    <div id="divPoslaju">
+        <img alt="" id="imgQR" src="/image/poslaju.jpg" width=550 height=400>
+    </div>
+    <div id="divJNT">
+        <img src="/image/jnt.jpg" alt="" width=550 height=400>
     </div>
 </body>
 </html>
@@ -28,11 +31,12 @@
 
     function printing2() {
         LODOP.PRINT_INIT("");
-        LODOP.SET_PRINT_PAGESIZE(1, 1100, 500, 0);
-        LODOP.ADD_PRINT_HTM(20, 300, "100%", "100%", document.getElementById("divImgQR").innerHTML);
-        LODOP.ADD_PRINT_HTM(250, 250, "100%", "100%", document.getElementById("divImgText").innerHTML);
-        LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT", "Width:50%;Height:50%");
-
+        LODOP.SET_PRINT_PAGESIZE(1,1000,1500,0);
+        LODOP.ADD_PRINT_IMAGE(0,0,"100%","100%",document.getElementById("divDHL").innerHTML);
+        LODOP.NewPage();
+        LODOP.ADD_PRINT_IMAGE(0,0,"100%","100%",document.getElementById("divPoslaju").innerHTML);
+        LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT", "Full-Page");
+        
         // LODOP.PRINT();
         LODOP.PREVIEW();
     }

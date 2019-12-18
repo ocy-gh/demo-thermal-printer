@@ -12,10 +12,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PrinterController {
 
     @GetMapping("/printqr")
-    public String printqr(Model model){
+    public String printqr (Model model){
         String ab = "hoelddddddddddddddd455ddddddddddddddddde";
         model.addAttribute("a",ab);
         return "printQR";
+    }
+
+    @GetMapping("/airwaybill")
+    public String printAWB (){
+
+        return "printAWB";
     }
 
 //    @PostMapping("/print")
