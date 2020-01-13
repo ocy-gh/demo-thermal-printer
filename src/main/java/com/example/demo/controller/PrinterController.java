@@ -26,9 +26,15 @@ public class PrinterController {
     }
 
     @GetMapping("/check")
-    public String check (){
+    public String checkLodopVersion(){
 
         return "checkLodop";
+    }
+
+    @GetMapping("/printStock")
+    public String printStockLabel(){
+
+        return "printStockLabel";
     }
 
 //    @PostMapping("/print")

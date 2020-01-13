@@ -1,0 +1,70 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+}
+
+@media screen {
+    .stock-labelling {
+        width: 225mm;
+        height: 55mm;
+        padding: 0;
+        margin: 5mm auto;
+        border: 0;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+        max-width: 130%;
+        max-height: 130%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@page {
+    size: 110mm 25mm;
+    padding: 0;
+    margin: 0 5mm 0 10mm;
+}
+
+@media print {
+    .stock-labelling {
+        width: 135mm;
+        height: 25mm;
+        background: white;
+        padding: 0;
+        margin: 0;
+        page-break-before: always;
+    }
+
+    #imgFirst{
+        margin-left: -18px;
+        margin-right: 18px;
+    }
+
+    #imgSecond{
+        margin-left: -10px;
+        margin-right: 10px;
+    }
+
+    #imgThird{
+        margin-left: 25px;
+        margin-right: -25px;
+    }
+
+    img {
+        max-width: 165%;
+        max-height: 165%;
+        width: auto;
+        height: auto;
+        margin-bottom: -40.5px;
+        margin-top: -45px;
+        margin-left: -30px;
+        padding: 0;
+    }
+}

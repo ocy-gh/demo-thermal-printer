@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Styling CSS -->
+    <link href="/hyper/assets/css/app.min.css" rel="stylesheet" type="text/css" id="main-style-container" />
+    <link href="/hyper/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/styles/template_stock_labelling_print.css" rel="stylesheet" type="text/css" />
+
+    <!-- C-LODOP -->
+    <script src='http://localhost:8000/CLodopfuncs.js?name=CLODOPA'></script>
+    <script src='http://192.168.3.18:8000/CLodopfuncs.js'></script>
+
+    <!-- LODOP -->
+    <script src='/js/LodopFunc.js'></script>
+
+    <object  id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0>
+        <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
+    </object>
+</head>
+<body>
+    <p id="txtPrint">Thermal Printer Test-Print</p>
+
+    <div class="stock-labelling mt-4">
+        <div class="row">
+            <div class="col-4" id="imgFirst">
+                <img src="/image/aaa.jpg">
+            </div>
+
+            <div class="col-4" id="imgSecond">
+                <img src="/image/aaa.jpg">
+            </div>
+
+            <div class="col-4" id="imgThird">
+                <img src="/image/aaa.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="text-center col-6">
+            <button class="btn btn-dark" onclick="printPage()">
+                Print
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+        var LODOP = getLodop(document.getElementById('LODOP_OB'), document.getElementById('LODOP_EM'));
+
+        function printPage() {
+            LODOP.PRINT_INIT("");
+            LODOP.SET_PRINT_PAGESIZE(1, 1100, 250, 0);
+            // LODOP.ADD_PRINT_HTM(0, 0, "100%", "100%", document.getElementById("txtPrint").innerHTML);
+            LODOP.ADD_PRINT_HTM(10, 40, "100%", "100%", document.getElementById("imgFirst").innerHTML);
+            LODOP.ADD_PRINT_HTM(10, 360, "100%", "100%", document.getElementById("imgSecond").innerHTML);
+            LODOP.ADD_PRINT_HTM(10, 670, "100%", "100%", document.getElementById("imgThird").innerHTML);
+            LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT", "Width:50%;Height:50%");
+            LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT", "Auto-Height");
+
+            // LODOP.PRINT();
+            LODOP.PREVIEW();
+        }
+</script>
+

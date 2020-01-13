@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src='http://localhost:8000/CLodopfuncs.js?name=CLODOPA'></script>
-    <script src='../templates/LodopFunc.js'></script>
+    <script src='../static/js/LodopFunc.js'></script>
     <object  id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0>
         <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
     </object>
@@ -36,7 +36,7 @@
         LODOP.NewPage();
         LODOP.ADD_PRINT_IMAGE(0,0,"100%","100%",document.getElementById("divPoslaju").innerHTML);
         LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT", "Full-Page");
-        
+
         // LODOP.PRINT();
         LODOP.PREVIEW();
     }
